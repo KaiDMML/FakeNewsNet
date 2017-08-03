@@ -15,7 +15,7 @@ It includes the social engagements of fake news articles from Twitter. We extrac
 3. _user_followers_: It includes the follower list of the relevant users
 4. _user_followees_: It includes list of users that are followed by relevant users
 
-## Source code
+## Source Code
 We will publish the Python code that are used to collect this dataset. Stay tuned.
 
 ## Data Availability
