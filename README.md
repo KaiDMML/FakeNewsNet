@@ -18,6 +18,9 @@ It includes the social engagements of fake news articles from Twitter. We extrac
 ## Source code
 We will publish the Python code that are used to collect this dataset. Stay tuned.
 
+## Data Availability
+Currently we have a prelimilary version of FakeNewsNet dataset and if you would like to use it, please send email to <kai.shu at asu.edu>
+
 [Fake news detection on Social Media: A Data Mining Perspective]:<http://www.public.asu.edu/~skai2/fake_news_review.html>
 
 (C) 2017 Arizona Board of Regents on Behalf of ASU
