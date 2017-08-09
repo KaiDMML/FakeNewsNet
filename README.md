@@ -21,6 +21,6 @@ We will publish the Python code that are used to collect this dataset. Stay tune
 ## Data Availability
 Currently we have a prelimilary version of FakeNewsNet dataset and if you would like to use it, please send email to <kai.shu at asu.edu>
 
-[Fake news detection on Social Media: A Data Mining Perspective]:<http://www.public.asu.edu/~skai2/fake_news_review.html>
+[Fake news detection on Social Media: A Data Mining Perspective]:<https://arxiv.org/abs/1708.01967>
 
 (C) 2017 Arizona Board of Regents on Behalf of ASU
