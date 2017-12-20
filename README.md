@@ -19,7 +19,8 @@ It includes the social engagements of fake news articles from Twitter. We extrac
 We will publish the Python code that are used to collect this dataset. Stay tuned.
 
 ## Data Availability
-We will public the dataset soon. Due the term of service of social media platform, we are not able to public raw data of social context. We anonymize sensitive user information, and provide bag-of-word features for user profile and content, and keep social relationship of users. If you would like the raw data of user profiles and contents, please send email to **<kai.shu at asu.edu>**, and do not distribute it.
+<!--We will public the dataset soon. -->
+Due the term of service of social media platform, we are not able to public raw data of social context. We anonymize sensitive user information, and provide bag-of-word features for user profile and content, and keep social relationship of users. If you would like the raw data of user profiles and contents, please send email to **<kai.shu at asu.edu>**, and do not distribute it.
 
 ## References
 If you use this dataset, please cite the following papers:
@@ -35,6 +36,14 @@ If you use this dataset, please cite the following papers:
   publisher={ACM}
 }
 ~~~~
+<!--~~~~
+@article{shu2017exploiting,
+  title={Exploiting Tri-Relationship for Fake News Detection},
+  author={Shu, Kai and Wang, Suhang and Liu, Huan},
+  journal={arXiv preprint arXiv:xxxxxx},
+  year={2017}
+}
+~~~~-->
 [Fake news detection on Social Media: A Data Mining Perspective]:<https://arxiv.org/abs/1708.01967>
 
 (C) 2017 Arizona Board of Regents on Behalf of ASU
