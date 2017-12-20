@@ -1,7 +1,7 @@
 # FakeNewsNet
 This is a repository for an ongoing data collection project for fake news research at ASU. We describe and compare FakeNewsNet with other existing datasets in [Fake News Detection on Social Media: A Data Mining Perspective].
-
-<!--We also perform a detail analysis of FakeNewsNet in [Exploiting Tri-Relationship for Fake News Detection] -->
+We also perform a detail analysis of FakeNewsNet dataset, and build a fake news detection model on this dataset. We will upload the manuscript soon.
+<!--in [Exploiting Tri-Relationship for Fake News Detection] -->
 
 ## News Content
 It includes all the fake news articles, with the news content attributes as follows:
@@ -25,7 +25,7 @@ We will publish the Python code that are used to collect this dataset. Stay tune
 Due the term of service of social media platform, we are not able to public raw data of social context. We anonymize sensitive user information, and provide bag-of-word features for user profile and content, and keep social relationship of users. If you would like the raw data of user profiles and contents, please send email to **<kai.shu at asu.edu>**, and do not distribute it.
 
 ## References
-If you use this dataset, please cite the following papers:
+If you use this dataset, please cite the following papers (another paper with a case study of FakeNewsNet will be posted soon!):
 ~~~~
 @article{shu2017fake,
   title={Fake News Detection on Social Media: A Data Mining Perspective},
