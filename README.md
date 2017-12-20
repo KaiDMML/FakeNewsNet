@@ -1,5 +1,7 @@
 # FakeNewsNet
-This is a repository for an ongoing data collection project for fake news research at ASU. The detail description for the dataset refers to the paper [Fake News Detection on Social Media: A Data Mining Perspective]
+This is a repository for an ongoing data collection project for fake news research at ASU. We describe and compare FakeNewsNet with other existing datasets in [Fake News Detection on Social Media: A Data Mining Perspective].
+
+<!--We also perform a detail analysis of FakeNewsNet in [Exploiting Tri-Relationship for Fake News Detection] -->
 
 ## News Content
 It includes all the fake news articles, with the news content attributes as follows:
@@ -44,6 +46,7 @@ If you use this dataset, please cite the following papers:
   year={2017}
 }
 ~~~~-->
-[Fake news detection on Social Media: A Data Mining Perspective]:<https://arxiv.org/abs/1708.01967>
+[Fake News Detection on Social Media: A Data Mining Perspective]:<https://arxiv.org/abs/1708.01967>
+<!--[Exploiting Tri-Relationship for Fake News Detection]:<http://arxiv.org/abs/xxxxx>-->
 
 (C) 2017 Arizona Board of Regents on Behalf of ASU
