@@ -7,4 +7,23 @@ This directory includes two fake news dataset that contain both the news content
  - PolitiFactNewsUser.txt: the news-user relationship. For example, '240	1' means news 240 is posted/spreaded by user 1.
  - PolitiFactUserUser.txt: the user-user relationship. For example, '1589	1' means user 1589 is following user 1;
 
+----------------------------------------------------------------------------------------------------------------
+References
+----------------------------------------------------------------------------------------------------------------
 
+@article{shu2017fake,
+  title={Fake News Detection on Social Media: A Data Mining Perspective},
+  author={Shu, Kai and Sliva, Amy and Wang, Suhang and Tang, Jiliang and Liu, Huan},
+  journal={ACM SIGKDD Explorations Newsletter},
+  volume={19},
+  number={1},
+  pages={22--36},
+  year={2017},
+  publisher={ACM}
+}
+@article{shu2017exploiting,
+  title={Exploiting Tri-Relationship for Fake News Detection},
+  author={Shu, Kai and Wang, Suhang and Liu, Huan},
+  journal={arXiv preprint arXiv:1712.07709},
+  year={2017}
+}
