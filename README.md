@@ -1,4 +1,9 @@
 # FakeNewsNet
+
+**Please use the current up-to-date version of dataset**:
+1) User may post same news several times, and this frequency information is added;
+2) User features are updated.
+
 This is a repository for an ongoing data collection project for fake news research at ASU. We describe and compare FakeNewsNet with other existing datasets in [Fake News Detection on Social Media: A Data Mining Perspective].
 We also perform a detail analysis of FakeNewsNet dataset, and build a fake news detection model on this dataset in [Exploiting Tri-Relationship for Fake News Detection]
 
