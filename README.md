@@ -27,7 +27,6 @@ We will publish the Python code that are used to collect this dataset. Stay tune
 ## Data Availability
 <!--We will public the dataset soon. -->
 Due the term of service of social media platform, we are not able to public raw data of social context. We anonymize sensitive user information, and provide bag-of-word features for user profile and content, and keep social relationship of users. 
-The raw data of user profiles and contents are upon request accordingly, please send email to **<kai.shu at asu.edu>**, and do not distribute it.
 
 ## References
 If you use this dataset, please cite the following papers:
