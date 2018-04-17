@@ -1,8 +1,10 @@
 # FakeNewsNet
 
 **Please use the current up-to-date version of dataset**:
+
 1) User may post same news several times, and this frequency information is added;
 2) User features are updated.
+3) News contents are updated. The original URLs of fake news may be revoked which makes the news content to be unavailable. We search the title and obtain the news contents for the news piece from other sources.
 
 This is a repository for an ongoing data collection project for fake news research at ASU. We describe and compare FakeNewsNet with other existing datasets in [Fake News Detection on Social Media: A Data Mining Perspective].
 We also perform a detail analysis of FakeNewsNet dataset, and build a fake news detection model on this dataset in [Exploiting Tri-Relationship for Fake News Detection]
