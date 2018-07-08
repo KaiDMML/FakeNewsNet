@@ -1,5 +1,7 @@
 # FakeNewsNet
 
+***We released our tool, FakeNewsTracker, for collecting, analyzing, and visualizing of fake news and the related dissemination. Check it out!***
+
 **Please use the current up-to-date version of dataset**:
 
 1) User may post same news several times, and this frequency information is added;
