@@ -1,6 +1,6 @@
 # FakeNewsNet
 
-***We released a tool [FakeNewsTracker], for collecting, analyzing, and visualizing of fake news and the related dissemination. Check it out!***
+***We released a tool [FakeNewsTracker], for collecting, analyzing, and visualizing of fake news and the related dissemination on social media. Check it out!***
 
 **Please use the current up-to-date version of dataset**:
 
