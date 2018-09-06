@@ -54,6 +54,16 @@ If you use this dataset, please cite the following papers:
   year={2017}
 }
 ~~~~
+
+~~~~
+@article{shu2018fakenewsnet,
+  title={FakeNewsNet: A Data Repository with News Content, Social Context and Dynamic Information for Studying Fake News on Social Media},
+  author={Shu, Kai and  Mahudeswaran, Deepak and Wang, Suhang and Lee, Dongwon and Liu, Huan},
+  journal={arXiv preprint arXiv:1809.01286},
+  year={2018}
+}
+~~~~
+
 [Fake News Detection on Social Media: A Data Mining Perspective]:<https://arxiv.org/abs/1708.01967>
 [Exploiting Tri-Relationship for Fake News Detection]:<http://arxiv.org/abs/1712.07709>
 [FakeNewsTracker]:<http://rebrand.ly/FakeNewsTracker>
