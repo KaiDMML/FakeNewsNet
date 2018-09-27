@@ -2,6 +2,8 @@
 
 ***We released a tool [FakeNewsTracker], for collecting, analyzing, and visualizing of fake news and the related dissemination on social media. Check it out!***
 
+**Latest [FakeNewsNet] dataset mentioned in arxiv paper will be released soon!**
+
 **Please use the current up-to-date version of dataset**:
 
 1) User may post same news several times, and this frequency information is added;
@@ -67,5 +69,6 @@ If you use this dataset, please cite the following papers:
 [Fake News Detection on Social Media: A Data Mining Perspective]:<https://arxiv.org/abs/1708.01967>
 [Exploiting Tri-Relationship for Fake News Detection]:<http://arxiv.org/abs/1712.07709>
 [FakeNewsTracker]:<http://rebrand.ly/FakeNewsTracker>
+[FakeNewsNet]:<https://arxiv.org/abs/1809.01286>
 
 (C) 2017 Arizona Board of Regents on Behalf of ASU
