@@ -68,7 +68,7 @@ If you use this dataset, please cite the following papers:
 
 [Fake News Detection on Social Media: A Data Mining Perspective]:<https://arxiv.org/abs/1708.01967>
 [Exploiting Tri-Relationship for Fake News Detection]:<http://arxiv.org/abs/1712.07709>
-[FakeNewsTracker]:<http://rebrand.ly/FakeNewsTracker>
+[FakeNewsTracker]:<http://blogtrackers.fulton.asu.edu:3000>
 [FakeNewsNet]:<https://arxiv.org/abs/1809.01286>
 
 (C) 2017 Arizona Board of Regents on Behalf of ASU
