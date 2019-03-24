@@ -2,8 +2,8 @@ import json
 import logging
 from multiprocessing.pool import Pool
 
-from Data_v2.code.util.TwythonConnector import TwythonConnector
-from Data_v2.code.util.util import create_dir, Config, multiprocess_data_collection
+from util.TwythonConnector import TwythonConnector
+from util.util import create_dir, Config, multiprocess_data_collection
 from tqdm import tqdm
 
 

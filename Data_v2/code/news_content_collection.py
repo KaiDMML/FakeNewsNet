@@ -5,7 +5,7 @@ import time
 from tqdm import tqdm
 from newspaper import Article
 
-from Data_v2.code.util.util import Config, create_dir
+from code.util.util import Config, create_dir
 
 
 def crawl_link_article(url):

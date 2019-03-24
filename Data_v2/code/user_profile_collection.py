@@ -3,9 +3,9 @@ import logging
 import os
 from pathlib import Path
 
-from Data_v2.code.util.Constants import GET_USER, GET_USER_TWEETS
-from Data_v2.code.util.TwythonConnector import TwythonConnector
-from Data_v2.code.util.util import Config, is_folder_exists, create_dir, multiprocess_data_collection
+from util.Constants import GET_USER, GET_USER_TWEETS
+from util.TwythonConnector import TwythonConnector
+from util.util import Config, is_folder_exists, create_dir, multiprocess_data_collection
 
 
 def get_user_ids_in_folder(samples_folder):

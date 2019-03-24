@@ -1,9 +1,9 @@
 import json
 import logging
 
-from Data_v2.code.tweet_collection import Tweet
-from Data_v2.code.util.TwythonConnector import TwythonConnector
-from Data_v2.code.util.util import create_dir, Config, multiprocess_data_collection
+from tweet_collection import Tweet
+from util.TwythonConnector import TwythonConnector
+from util.util import create_dir, Config, multiprocess_data_collection
 
 
 def dump_retweets_job(tweet: Tweet, config: Config, twython_connector: TwythonConnector):
