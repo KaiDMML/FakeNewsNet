@@ -3,27 +3,29 @@ import json
 
 from util.util import Config, News
 
+from code.news_content_collection import NewsContentCollector
+from code.retweet_collection import RetweetCollector
+from code.tweet_collection import TweetCollector
+from code.user_profile_collection import UserProfileCollector, UserTimelineTweetsCollector
 
-class DataCollector:
 
-    def __init__(self, config, function_reference):
+class DataCollectorFactory:
+
+    def __init__(self, config):
         self.config = config
-        self.function_reference = function_reference
 
-    def collect_data(self, choices):
-        for choice in choices:
-            news_list = self.load_news_file(choice)
-            self.function_reference(news_list, choice["news_source"], choice["label"], self.config)
+    def get_collector_object(self, feature_type):
 
-    def load_news_file(self, data_choice):
-        news_list = []
-        with open('{}/{}_{}.csv'.format(self.config.dataset_dir, data_choice["news_source"],
-                                        data_choice["label"])) as csvfile:
-            reader = csv.DictReader(csvfile)
-            for news in reader:
-                news_list.append(News(news, data_choice["label"], data_choice["news_source"]))
-
-        return news_list
+        if feature_type == "news_articles":
+            return NewsContentCollector()
+        elif feature_type == "tweets":
+            return TweetCollector()
+        elif feature_type == "retweets":
+            return RetweetCollector()
+        elif feature_type == "user_profile":
+            return UserProfileCollector()
+        elif feature_type == "user_timeline_tweets":
+            return UserTimelineTweetsCollector()
 
 
 def init_config():
@@ -38,6 +40,14 @@ def init_config():
     return config, data_choices, data_features_to_collect
 
 
-if __name__ == "__main__":
+def download_dataset():
     config, data_choices, data_features_to_collect = init_config()
+    data_collector_factory = DataCollectorFactory(config)
 
+    for feature_type in data_features_to_collect:
+        data_collector = data_collector_factory.get_collector_object(feature_type)
+        data_collector.collect_data(data_choices)
+
+
+if __name__ == "__main__":
+    download_dataset()

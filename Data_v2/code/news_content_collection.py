@@ -5,6 +5,7 @@ import time
 from tqdm import tqdm
 from newspaper import Article
 
+from util import DataCollector
 from code.util.util import Config, create_dir
 
 
@@ -88,3 +89,10 @@ def collect_news_articles(news_source, label, news_list, config: Config):
         if news_article:
             json.dump(news_article, open("{}/{}/news content.json".format(save_dir, news.news_id)))
 
+
+class NewsContentCollector(DataCollector):
+
+    def collect_data(self, choices):
+        for choice in choices:
+            news_list = self.load_news_file(choice)
+            collect_news_articles(news_list, choice["news_source"], choice["label"], self.config)

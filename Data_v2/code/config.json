@@ -1,0 +1,27 @@
+{
+  "dump_location": "fakenewsnet_dataset",
+  "dataset_dir": "../dataset",
+  "tweet_keys_file": "code/resources/tweet_keys_file.txt",
+  "num_process": 4,
+
+  "data_collection_choice": [
+    {
+      "news_source": "politifact",
+      "label": "fake"
+    },
+    {
+      "news_source": "politifact",
+      "label": "real"
+    },
+    {
+      "news_source": "gossipcop",
+      "label": "fake"
+    },
+    {
+      "news_source": "gossipcop",
+      "label": "fake"
+    }
+  ],
+
+  "data_features_to_collect" : ["news_articles", "tweets", "retweets", "user_profile", "user_timeline_tweets"]
+}

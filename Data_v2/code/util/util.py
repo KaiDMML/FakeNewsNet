@@ -1,3 +1,4 @@
+import csv
 import errno
 import os
 from multiprocessing.pool import Pool
@@ -16,6 +17,8 @@ class News:
         self.label = label
         self.platform = news_platform
 
+        self.twython_connector = None
+
 
 class Config:
 
@@ -24,6 +27,25 @@ class Config:
         self.dump_location = data_collection_dir
         self.tweet_keys_file = tweet_keys_file
         self.num_process = num_process
+
+
+class DataCollector:
+
+    def __init__(self, config):
+        self.config = config
+
+    def collect_data(self, choices):
+        pass
+
+    def load_news_file(self, data_choice):
+        news_list = []
+        with open('{}/{}_{}.csv'.format(self.config.dataset_dir, data_choice["news_source"],
+                                        data_choice["label"])) as csvfile:
+            reader = csv.DictReader(csvfile)
+            for news in reader:
+                news_list.append(News(news, data_choice["label"], data_choice["news_source"]))
+
+        return news_list
 
 
 def create_dir(dir_name):
@@ -40,7 +62,6 @@ def is_folder_exists(folder_name):
 
 
 def multiprocess_data_collection(function_reference, data_list, args, config: Config):
-
     # Create process pool of pre defined size
     pool = Pool(config.num_process)
 

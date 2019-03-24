@@ -5,6 +5,8 @@ from tweet_collection import Tweet
 from util.TwythonConnector import TwythonConnector
 from util.util import create_dir, Config, multiprocess_data_collection
 
+from util import DataCollector
+
 
 def dump_retweets_job(tweet: Tweet, config: Config, twython_connector: TwythonConnector):
     retweets = []
@@ -29,18 +31,25 @@ def dump_retweets_job(tweet: Tweet, config: Config, twython_connector: TwythonCo
     json.dump(retweet_obj, open("{}/{}.json".format(retweet_dir, tweet.tweet_id), "w"))
 
 
-def collect_tweets(news_list, news_source, label, config: Config):
+def collect_retweets(news_list, news_source, label, config: Config):
     create_dir(config.dump_location)
     create_dir("{}/{}".format(config.dump_location, news_source))
     create_dir("{}/{}/{}".format(config.dump_location, news_source, label))
 
     save_dir = "{}/{}/{}".format(config.dump_location, news_source, label)
 
-    twython_connector = None
     tweet_id_list = []
 
     for news in news_list:
         for tweet_id in news.tweet_ids:
             tweet_id_list.append(Tweet(tweet_id, news.news_id, news_source, label))
 
-    multiprocess_data_collection(dump_retweets_job, tweet_id_list, (config, twython_connector), config)
+    multiprocess_data_collection(dump_retweets_job, tweet_id_list, (config, config.twython_connector), config)
+
+
+class RetweetCollector(DataCollector):
+
+    def collect_data(self, choices):
+        for choice in choices:
+            news_list = self.load_news_file(choice)
+            collect_retweets(news_list, choice["news_source"], choice["label"], self.config)
