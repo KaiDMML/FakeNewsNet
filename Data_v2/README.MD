@@ -1,7 +1,7 @@
+
 ### Data Collection:    
     
-Complete dataset cannot be distributed because of Twitter privacy policies and websites publisher copy right information.    
-    
+Complete dataset cannot be distributed because of Twitter privacy policies and websites publisher copy right information.     
 This code can be used to download news articles from published websites and relevant social media data from Twitter.  
     
 ### Requirements:    
@@ -36,10 +36,10 @@ Following attributes can be configured
  - **data_features_to_collect** - FakeNewsNet has multiple dimensions of data (News + Social). This configuration allows one to download desired dimension of the dataset. This is an array field and can take following values.  
 	              
 	 - **news_articles** : This option downloads the news articles for the dataset.  
-      - **tweets** : Download tweets objects posted sharing the news in Twitter. This makes use of Twitter API to download tweets.  
-       - **retweets**: This option allows to download the retweets of the tweets provided in the dataset.  
-        - **user_profile**: This option allows to download the user profile information of the users involved in tweets. To download user profiles, tweet objects need to be downloaded first inorder to identify users involved in tweets.  
-         - **user_timeline_tweets**: This option allows to download upto 200 recent tweets from the user timeline. To download user's recent tweets, tweet objects needs to be downloaded first inorder to identify users involved in tweets.
+     - **tweets** : Download tweets objects posted sharing the news in Twitter. This makes use of Twitter API to download tweets.  
+     - **retweets**: This option allows to download the retweets of the tweets provided in the dataset.  
+      - **user_profile**: This option allows to download the user profile information of the users involved in tweets. To download user profiles, tweet objects need to be downloaded first inorder to identify users involved in tweets.  
+       - **user_timeline_tweets**: This option allows to download upto 200 recent tweets from the user timeline. To download user's recent tweets, tweet objects needs to be downloaded first inorder to identify users involved in tweets.
 
 
 ### Dataset format
@@ -50,35 +50,34 @@ The downloaded dataset will have the following  folder structure,
 │   │   ├── gossipcop-1
 │   │	│	├── news content.json
 │   │	│	├── tweets
-│	│	│	│	├── 886941526458347521.json
-│	│	│	│	├── 887096424105627648.json
-│	│	│	│	└── ....		
-│   │	│  └── retweets
-│	│	│		├── 887096424105627648.json
-│	│	│		├── 887096424105627648.json
-│	│	│		└── ....
-│	│	└── ....			
+│   │	│	│	├── 886941526458347521.json
+│   │	│	│	├── 887096424105627648.json
+│   │	│	│	│	└── ....		
+│   │	│  	└── retweets
+│   │	│		├── 887096424105627648.json
+│   │	│		├── 887096424105627648.json
+│   │	│		└── ....
+│   │	└── ....			
 │   └── real
 │      ├── gossipcop-1
 │      │	├── news content.json
 │      │	├── tweets
-│	   │	└── retweets
+│      │	└── retweets
 │		└── ....		
 ├── politifact
 │   ├── fake
 │   │   ├── politifact-1
 │   │   │	├── news content.json
 │   │   │	├── tweets
-│	│   │	└── retweets
-│	│	└── ....		
-│	│
+│   │   │	└── retweets
+│   │	└── ....		
+│   │
 │   └── real
 │      ├── poliifact-2
 │      │	├── news content.json
 │      │	├── tweets
-│	   │	└── retweets
-│		└── ....					
+│      │	└── retweets
+│      └── ....					
 ├── user_profiles
 └── user_timeline_tweets
 ```
-
