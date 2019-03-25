@@ -5,8 +5,9 @@ import time
 from tqdm import tqdm
 from newspaper import Article
 
-from util import DataCollector
-from code.util.util import Config, create_dir
+from util.util import DataCollector
+from util.util import Config, create_dir
+from util import Constants
 
 
 def crawl_link_article(url):
@@ -68,14 +69,21 @@ def crawl_link_article(url):
         result_json = {'url': url, 'text': visible_text, 'images': list(images), 'top_img': top_image,
                        'keywords': keywords,
                        'authors': authors, 'canonical_link': canonical_link, 'title': title, 'meta_data': meta_data,
-                       'movies': movies, 'publish_date': publish_date, 'source': source, 'summary': summary}
+                       'movies': movies, 'publish_date': get_epoch_time(publish_date), 'source': source, 'summary': summary}
     except:
         logging.exception("Exception in fetching article form URL : {}".format(url))
 
     return result_json
 
 
-def collect_news_articles(news_source, label, news_list, config: Config):
+def get_epoch_time(time_obj):
+    if time_obj:
+        return time_obj.timestamp()
+
+    return None
+
+
+def collect_news_articles(news_list, news_source, label, config: Config):
     create_dir(config.dump_location)
     create_dir("{}/{}".format(config.dump_location, news_source))
     create_dir("{}/{}/{}".format(config.dump_location, news_source, label))
@@ -87,10 +95,14 @@ def collect_news_articles(news_source, label, news_list, config: Config):
         create_dir("{}/{}".format(save_dir, news.news_id))
 
         if news_article:
-            json.dump(news_article, open("{}/{}/news content.json".format(save_dir, news.news_id)))
+            json.dump(news_article,
+                      open("{}/{}/news content.json".format(save_dir, news.news_id), "w", encoding="UTF-8"))
 
 
 class NewsContentCollector(DataCollector):
+
+    def __init__(self, config):
+        super(NewsContentCollector, self).__init__(config)
 
     def collect_data(self, choices):
         for choice in choices:

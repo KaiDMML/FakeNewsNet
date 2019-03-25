@@ -23,8 +23,13 @@ class TwythonConnector:
         with open(keys_file, 'r') as fKeysIn:
             for line in fKeysIn:
                 line = line.rstrip().split('\t')
-                self.streams.append(self._get_twitter_connection(connection_mode=1, app_key=line[0], app_secret=line[1],
-                                                                 oauth_token=line[2], oauth_token_secret=line[3]))
+
+                # self.streams.append(self._get_twitter_connection(connection_mode=1, app_key=line[0], app_secret=line[1],
+                #                                                  oauth_token=line[2], oauth_token_secret=line[3]))
+
+                self.streams.append(self._get_twitter_connection(connection_mode=1,
+                                                                 app_key="qRF3pULRnp7eNzmsrAJ5zmcn3", app_secret="dFTRYni3SFw8hQ4GbCaIXSYAvZzJSsiGBXzlccN8all31SdNXQ",
+                                                                 oauth_token="925443987267207168-7IRskgvI7bDnxm2P77cIoG4wxbCAtBn", oauth_token_secret="EptYISbGARgKMyZLCyGaDrEtXFpr0oNA1REPuJkNJsSdX"))
 
     @staticmethod
     def _get_twitter_connection(connection_mode=1, app_key=None, app_secret=None, oauth_token=None,

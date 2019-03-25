@@ -1,11 +1,14 @@
 import json
 import logging
+from twython import TwythonError, TwythonRateLimitError
+
 
 from tweet_collection import Tweet
 from util.TwythonConnector import TwythonConnector
 from util.util import create_dir, Config, multiprocess_data_collection
 
-from util import DataCollector
+from util.util import DataCollector
+from util import Constants
 
 
 def dump_retweets_job(tweet: Tweet, config: Config, twython_connector: TwythonConnector):
@@ -48,6 +51,9 @@ def collect_retweets(news_list, news_source, label, config: Config):
 
 
 class RetweetCollector(DataCollector):
+
+    def __init__(self, config):
+        super(RetweetCollector, self).__init__(config)
 
     def collect_data(self, choices):
         for choice in choices:

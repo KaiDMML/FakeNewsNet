@@ -3,10 +3,12 @@ import logging
 from multiprocessing.pool import Pool
 
 from util.TwythonConnector import TwythonConnector
-from util.util import create_dir, Config, multiprocess_data_collection
-from tqdm import tqdm
+from twython import TwythonError, TwythonRateLimitError
 
-from util import DataCollector
+from util.util import create_dir, Config, multiprocess_data_collection
+
+from util.util import DataCollector
+from util import Constants
 
 
 class Tweet:
@@ -33,7 +35,7 @@ def dump_tweet_information(tweet: Tweet, config: Config, twython_connector: Twyt
     except TwythonRateLimitError:
         logging.exception("Twython API rate limit exception")
 
-    except:
+    except Exception as ex:
         logging.exception("exception in collecting tweet objects")
 
     return None
@@ -56,6 +58,9 @@ def collect_tweets(news_list, news_source, label, config: Config):
 
 
 class TweetCollector(DataCollector):
+
+    def __init__(self, config):
+        super(TweetCollector, self).__init__(config)
 
     def collect_data(self, choices):
         for choice in choices:

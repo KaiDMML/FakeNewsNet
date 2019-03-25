@@ -2,12 +2,14 @@ import json
 import logging
 import os
 from pathlib import Path
+from twython import TwythonError, TwythonRateLimitError
+
 
 from util.Constants import GET_USER, GET_USER_TWEETS
 from util.TwythonConnector import TwythonConnector
 from util.util import Config, is_folder_exists, create_dir, multiprocess_data_collection
 
-from util import DataCollector
+from util.util import DataCollector
 
 
 def get_user_ids_in_folder(samples_folder):
@@ -82,6 +84,9 @@ def collect_user_profiles(config: Config, twython_connector: TwythonConnector):
 
 class UserProfileCollector(DataCollector):
 
+    def __init__(self, config):
+        super(UserProfileCollector, self).__init__(config)
+
     def collect_data(self, choices):
         all_user_ids = set()
 
@@ -91,11 +96,14 @@ class UserProfileCollector(DataCollector):
         user_profiles_folder = "{}/{}".format(self.config.dump_location, "user_profiles")
         create_dir(user_profiles_folder)
 
-        multiprocess_data_collection(dump_user_profile_job, all_user_ids, (user_profiles_folder, self.config.twython_connector),
+        multiprocess_data_collection(dump_user_profile_job, list(all_user_ids), (user_profiles_folder, self.config.twython_connector),
                                      self.config)
 
 
 class UserTimelineTweetsCollector(DataCollector):
+
+    def __init__(self, config):
+        super(UserTimelineTweetsCollector, self).__init__(config)
 
     def collect_data(self, choices):
         all_user_ids = set()
@@ -106,5 +114,5 @@ class UserTimelineTweetsCollector(DataCollector):
         user_timeline_tweets_folder = "{}/{}".format(self.config.dump_location, "user_timeline_tweets")
         create_dir(user_timeline_tweets_folder)
 
-        multiprocess_data_collection(dump_user_recent_tweets_job, all_user_ids, (user_timeline_tweets_folder,
+        multiprocess_data_collection(dump_user_recent_tweets_job, list(all_user_ids), (user_timeline_tweets_folder,
                                                                                  self.config.twython_connector), self.config)

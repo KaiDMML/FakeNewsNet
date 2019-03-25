@@ -1,9 +1,12 @@
 import csv
 import errno
 import os
+import sys
 from multiprocessing.pool import Pool
 
 from tqdm import tqdm
+
+from util.TwythonConnector import TwythonConnector
 
 
 class News:
@@ -12,12 +15,17 @@ class News:
         self.news_id = info_dict["id"]
         self.news_url = info_dict["news_url"]
         self.news_title = info_dict["title"]
-        self.tweet_ids = [int(tweet_id) for tweet_id in info_dict["tweet_ids"].split("\t")]
+        self.tweet_ids =[]
+
+        try:
+            tweets =  [int(tweet_id) for tweet_id in info_dict["tweet_ids"].split("\t")]
+            self.tweet_ids = tweets
+        except:
+            pass
 
         self.label = label
         self.platform = news_platform
 
-        self.twython_connector = None
 
 
 class Config:
@@ -27,6 +35,9 @@ class Config:
         self.dump_location = data_collection_dir
         self.tweet_keys_file = tweet_keys_file
         self.num_process = num_process
+
+        self.twython_connector = TwythonConnector("localhost:5000", tweet_keys_file)
+
 
 
 class DataCollector:
@@ -38,9 +49,11 @@ class DataCollector:
         pass
 
     def load_news_file(self, data_choice):
+        csv.field_size_limit(sys.maxsize)
+
         news_list = []
         with open('{}/{}_{}.csv'.format(self.config.dataset_dir, data_choice["news_source"],
-                                        data_choice["label"])) as csvfile:
+                                        data_choice["label"]), encoding="UTF-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for news in reader:
                 news_list.append(News(news, data_choice["label"], data_choice["news_source"]))
@@ -65,13 +78,13 @@ def multiprocess_data_collection(function_reference, data_list, args, config: Co
     # Create process pool of pre defined size
     pool = Pool(config.num_process)
 
-    pbar = tqdm(total=100)
+    pbar = tqdm(total=len(data_list))
 
-    def update():
+    def update(arg):
         pbar.update()
 
     for i in range(pbar.total):
-        pool.apply_async(function_reference, args=(data_list[i], args), callback=update)
+        pool.apply_async(function_reference, args=(data_list[i],)+ args, callback=update)
 
     pool.close()
     pool.join()

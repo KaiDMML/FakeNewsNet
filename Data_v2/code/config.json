@@ -3,7 +3,7 @@
   "dataset_dir": "../dataset",
   "tweet_keys_file": "code/resources/tweet_keys_file.txt",
   "num_process": 4,
-
+  "num_twitter_keys": 1,
   "data_collection_choice": [
     {
       "news_source": "politifact",

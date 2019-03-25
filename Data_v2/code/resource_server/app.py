@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -12,8 +14,8 @@ cors = CORS(app)
 keys_state = dict()
 
 
-def init_state():
-    num_keys = 34
+def init_state(num_keys):
+    print("No. of twitter keys : {}".format(num_keys))
     keys_state["get_retweet"] = ResourceAllocator(num_keys, time_window=905, window_limit=75)
     keys_state["get_tweet"] = ResourceAllocator(num_keys, time_window=905, window_limit=900)
     keys_state["get_follower_friends_ids"] = ResourceAllocator(num_keys, time_window=920, window_limit=15)
@@ -49,6 +51,11 @@ def get_key_index():
     return jsonify({'result': 500})
 
 
+def get_num_process():
+    json_object = json.load(open("config.json"))
+    return int(json_object["num_twitter_keys"])
+
+
 if __name__ == '__main__':
-    init_state()
+    init_state(get_num_process())
     app.run(host='0.0.0.0', debug=False)
