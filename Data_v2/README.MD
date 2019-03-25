@@ -17,7 +17,7 @@ Each of the above CSV files are comma separated files and have the following col
  - `url` - Url of the article from web that published that news 
  - `title` - Title of the news article found in the URL
  - `tweet_ids` - Tweet ids of tweets related to news sample posted on Twitter. This field is list of tweet ids separated by tab.
- - 
+ 
 Social engagements and user information are not disclosed because of Twitter Policy. 
 
 ### Requirements:    
@@ -115,7 +115,9 @@ The downloaded dataset will have the following  folder structure,
 ├── user_profiles
 └── user_timeline_tweets
 ```
-**News Content** - `news content.json`
+**News Content**
+
+`news content.json`:
 This json includes all the meta information of the news articles collected using the provided news source URLs. This is a JSON object with attributes including:
 
  - `text` is the text of the body of the news article. 
