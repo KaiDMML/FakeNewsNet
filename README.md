@@ -15,7 +15,7 @@ Previous version of the dataset is available in branch named `old-version` of th
 
 Complete dataset cannot be distributed because of Twitter privacy policies and news publisher copy rights.  Social engagements and user information are not disclosed because of Twitter Policy. This code repository can be used to download news articles from published websites and relevant social media data from Twitter. 
 
-The minimalistic version of latest dataset provied in this repo (located in `dataset` folder) include following files:
+The minimalistic version of latest dataset provided in this repo (located in `dataset` folder) include following files:
 
  - `politifact_fake.csv` -  Samples related to fake news collected from PolitiFact 
  - `politifact_real.csv` -  Samples related to real news collected  from PolitiFact 
@@ -37,7 +37,7 @@ Each of the above CSV files is comma separated file and have the following colum
 Twitter API keys are used for collecting data from Twitter.  Make use of the following link to get Twitter API keys    
 https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html   
 
-Script make use of keys from  _tweet_keys_file.txt_ file. So the API keys needs to be updated in `tweet_keys_file.txt` file.  Provide the keys as rows where each row represents the parts of the keys in the following order `app_key,app_secret,oauth_token,oauth_token_secret`
+Script make use of keys from  _tweet_keys_file.txt_ file located in `code/resources` folder. So the API keys needs to be updated in `tweet_keys_file.txt` file.  Provide the keys as rows where each row represents the parts of the keys in the following order `app_key,app_secret,oauth_token,oauth_token_secret`
 
 Install all the libraries in `requirements.txt` using the following command
     
