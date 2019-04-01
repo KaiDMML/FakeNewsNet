@@ -1,7 +1,7 @@
 {
   "dump_location": "fakenewsnet_dataset",
   "dataset_dir": "../dataset",
-  "tweet_keys_file": "code/resources/tweet_keys_file.txt",
+  "tweet_keys_file": "resources/tweet_keys_file.txt",
   "num_process": 4,
   "num_twitter_keys": 1,
   "data_collection_choice": [
