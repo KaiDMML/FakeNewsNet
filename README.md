@@ -61,8 +61,10 @@ The `config.json` can be used to configure and collect only certain parts of the
 	 - **news_articles** : This option downloads the news articles for the dataset.  
      - **tweets** : This option downloads tweets objects posted sharing the news in Twitter. This makes use of Twitter API to download tweets.  
      - **retweets**: This option allows to download the retweets of the tweets provided in the dataset.  
-      - **user_profile**: This option allows to download the user profile information of the users involved in tweets. To download user profiles, tweet objects need to be downloaded first inorder to identify users involved in tweets.  
-      - **user_timeline_tweets**: This option allows to download upto 200 recent tweets from the user timeline. To download user's recent tweets, tweet objects needs to be downloaded first inorder to identify users involved in tweets.
+     - **user_profile**: This option allows to download the user profile information of the users involved in tweets. To download user profiles, tweet objects need to be downloaded first in order to identify users involved in tweets.  
+     - **user_timeline_tweets**: This option allows to download upto 200 recent tweets from the user timeline. To download user's recent tweets, tweet objects needs to be downloaded first in order to identify users involved in tweets.
+     - **user_followers**: This option allows to download the user followers ids of the users involved in tweets. To download user followers ids, tweet objects need to be downloaded first in order to identify users involved in tweets.  
+     - **user_following**: This option allows to download the user following ids of the users involved in tweets. To download user's following ids, tweet objects needs to be downloaded first in order to identify users involved in tweets.
 
 
 Code for collecting some of the dimensions of social engagments including replies and commets can be provided upon request.
@@ -126,11 +128,18 @@ The downloaded dataset will have the following  folder structure,
 │		├── 374136824.json
 │		├── 937649414600101889.json
 │   	└── ....
-└── user_timeline_tweets
-		├── 374136824.json
+├── user_timeline_tweets
+│		├── 374136824.json
+│		├── 937649414600101889.json
+│	   	└── ....
+└── user_followers
+│		├── 374136824.json
+│		├── 937649414600101889.json
+│	   	└── ....
+└──user_following
+        ├── 374136824.json
 		├── 937649414600101889.json
 	   	└── ....
-
 ```
 **News Content**
 
@@ -154,6 +163,12 @@ This folder contains all the user profiles of the users posting tweets related t
 
 **`user_timeline_tweets` folder**:
 This folder contains files representing the time line of tweets of users posting tweets related to fake and real news. All files in the folder are named as `<user_id>.json` and have JSON array of upto 200 recent tweets of the users. The files have format mentioned same as [https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline.html](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline.html).
+
+**`user_followers` folder**:
+This folder contains all the user followers ids of the users posting tweets related to all news articles. This same folder is used for both datasources ( Politifact and GossipCop). It contains files named as `<user_id>.json` and have JSON data with `user_id` and `followers` attributes.
+
+**`user_following` folder**:
+This folder contains all the user following ids of the users posting tweets related to all news articles. This same folder is used for both datasources ( Politifact and GossipCop). It contains files named as `<user_id>.json` and have JSON data with `user_id` and `following` attributes.
 
 
 ## References
