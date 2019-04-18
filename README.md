@@ -127,7 +127,7 @@ The downloaded dataset will have the following  folder structure,
 ├── user_profiles
 │		├── 374136824.json
 │		├── 937649414600101889.json
-│   	└── ....
+│   		└── ....
 ├── user_timeline_tweets
 │		├── 374136824.json
 │		├── 937649414600101889.json
@@ -137,7 +137,7 @@ The downloaded dataset will have the following  folder structure,
 │		├── 937649414600101889.json
 │	   	└── ....
 └──user_following
-        ├── 374136824.json
+        	├── 374136824.json
 		├── 937649414600101889.json
 	   	└── ....
 ```
