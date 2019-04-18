@@ -8,7 +8,8 @@ from util.util import Config, News
 from news_content_collection import NewsContentCollector
 from retweet_collection import RetweetCollector
 from tweet_collection import TweetCollector
-from user_profile_collection import UserProfileCollector, UserTimelineTweetsCollector
+from user_profile_collection import UserProfileCollector, UserTimelineTweetsCollector, UserFollowingCollector, \
+    UserFollowersCollector
 
 
 class DataCollectorFactory:
@@ -28,6 +29,10 @@ class DataCollectorFactory:
             return UserProfileCollector(self.config)
         elif feature_type == "user_timeline_tweets":
             return UserTimelineTweetsCollector(self.config)
+        elif feature_type == "user_following":
+            return UserFollowingCollector(self.config)
+        elif feature_type == "user_followers":
+            return UserFollowersCollector(self.config)
 
 
 def init_config():

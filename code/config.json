@@ -23,5 +23,5 @@
     }
   ],
 
-  "data_features_to_collect" : ["news_articles", "tweets", "retweets", "user_profile", "user_timeline_tweets"]
+  "data_features_to_collect" : ["news_articles", "tweets", "retweets", "user_profile", "user_timeline_tweets", "user_followers", "user_following"]
 }
