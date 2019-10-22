@@ -16,7 +16,7 @@ MarkupSafe==1.1.1
 newspaper3k==0.2.8
 nltk==3.4
 oauthlib==3.0.1
-Pillow==5.4.1
+Pillow==6.2.0
 python-dateutil==2.8.0
 PyYAML==5.1
 requests==2.21.0
