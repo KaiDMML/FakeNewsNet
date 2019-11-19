@@ -37,7 +37,7 @@ Each of the above CSV files is comma separated file and have the following colum
 Twitter API keys are used for collecting data from Twitter.  Make use of the following link to get Twitter API keys    
 https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html   
 
-Script make use of keys from  _tweet_keys_file.txt_ file located in `code/resources` folder. So the API keys needs to be updated in `tweet_keys_file.txt` file.  Provide the keys as rows where each row represents the parts of the keys in the following order `app_key,app_secret,oauth_token,oauth_token_secret`
+Script make use of keys from  _tweet_keys_file.json_ file located in `code/resources` folder. So the API keys needs to be updated in `tweet_keys_file.json` file.  Provide the keys as array of JSON object with attributes `app_key,app_secret,oauth_token,oauth_token_secret` as mentioned in sample file.
 
 Install all the libraries in `requirements.txt` using the following command
     

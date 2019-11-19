@@ -20,14 +20,12 @@ class TwythonConnector:
         :param keys_file: Twitter keys file
         :return:
         """
-        with open(keys_file, 'r') as fKeysIn:
-            next(fKeysIn)
-            for line in fKeysIn:
-                line = line.rstrip().split(',')
-
-                self.streams.append(self._get_twitter_connection(connection_mode=1, app_key=line[0], app_secret=line[1],
-                                                                 oauth_token=line[2], oauth_token_secret=line[3]))
-
+        keys = json.load(open(keys_file, 'r'))
+        for key in keys:
+            self.streams.append(self._get_twitter_connection(connection_mode=1, app_key=key['app_key'],
+                                                             app_secret=key['app_secret'],
+                                                             oauth_token=key['oauth_token'],
+                                                             oauth_token_secret=key['oauth_token_secret']))
 
     @staticmethod
     def _get_twitter_connection(connection_mode=1, app_key=None, app_secret=None, oauth_token=None,
