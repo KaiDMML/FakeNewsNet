@@ -24,17 +24,18 @@ def dump_retweets_job(tweet: Tweet, config: Config, twython_connector: TwythonCo
     connection = None
 
     dump_dir = "{}/{}/{}/{}".format(config.dump_location, tweet.news_source, tweet.label, tweet.news_id)
-    try:
-        connection = twython_connector.get_twython_connection(Constants.GET_RETWEET)
-        if _should_fetch_retweets(tweet, dump_dir):
+
+    if _should_fetch_retweets(tweet, dump_dir):
+        try:
+            connection = twython_connector.get_twython_connection(Constants.GET_RETWEET)
             retweets = connection.get_retweets(id=tweet.tweet_id, count=100, cursor=-1)
 
-    except TwythonRateLimitError:
-        logging.exception("Twython API rate limit exception - tweet id : {}".format(tweet.tweet_id))
+        except TwythonRateLimitError:
+            logging.exception("Twython API rate limit exception - tweet id : {}".format(tweet.tweet_id))
 
-    except Exception:
-        logging.exception(
-            "Exception in getting retweets for tweet id %d using connection %s" % (tweet.tweet_id, connection))
+        except Exception:
+            logging.exception(
+                "Exception in getting retweets for tweet id %d using connection %s" % (tweet.tweet_id, connection))
 
     retweet_obj = {"retweets": retweets}
 
