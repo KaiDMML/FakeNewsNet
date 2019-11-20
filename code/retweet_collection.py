@@ -5,18 +5,29 @@ from twython import TwythonError, TwythonRateLimitError
 
 from tweet_collection import Tweet
 from util.TwythonConnector import TwythonConnector
-from util.util import create_dir, Config, multiprocess_data_collection
+from util.util import create_dir, Config, multiprocess_data_collection, is_file_exists
 
 from util.util import DataCollector
 from util import Constants
 
 
+def _should_fetch_retweets(tweet: Tweet, dump_dir):
+    tweet_filename = "{}/{}.json".format(dump_dir, tweet.tweet_id)
+    if not is_file_exists(tweet_filename):
+        return True
+    with open(tweet_filename) as file:
+        tweet_object = json.load(file)
+    return tweet_object.get("retweet_count", 0) > 0
+
 def dump_retweets_job(tweet: Tweet, config: Config, twython_connector: TwythonConnector):
     retweets = []
     connection = None
+
+    dump_dir = "{}/{}/{}/{}".format(config.dump_location, tweet.news_source, tweet.label, tweet.news_id)
     try:
-        connection = twython_connector.get_twython_connection("get_retweet")
-        retweets = connection.get_retweets(id=tweet.tweet_id, count=100, cursor=-1)
+        connection = twython_connector.get_twython_connection(Constants.GET_RETWEET)
+        if _should_fetch_retweets(tweet, dump_dir):
+            retweets = connection.get_retweets(id=tweet.tweet_id, count=100, cursor=-1)
 
     except TwythonRateLimitError:
         logging.exception("Twython API rate limit exception - tweet id : {}".format(tweet.tweet_id))
@@ -27,7 +38,6 @@ def dump_retweets_job(tweet: Tweet, config: Config, twython_connector: TwythonCo
 
     retweet_obj = {"retweets": retweets}
 
-    dump_dir = "{}/{}/{}/{}".format(config.dump_location, tweet.news_source, tweet.label, tweet.news_id)
     retweet_dir = "{}/retweets".format(dump_dir)
     create_dir(dump_dir)
     create_dir(retweet_dir)

@@ -81,6 +81,8 @@ def create_dir(dir_name):
 def is_folder_exists(folder_name):
     return os.path.exists(folder_name)
 
+def is_file_exists(file_name):
+    return os.path.exists(file_name)
 
 def equal_chunks(list, chunk_size):
     """return successive n-sized chunks from l."""
