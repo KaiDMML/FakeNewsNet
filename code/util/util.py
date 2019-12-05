@@ -9,16 +9,24 @@ from tqdm import tqdm
 from util.TwythonConnector import TwythonConnector
 
 
-class News:
+class Tweet:
 
+    def __init__(self, tweet_id, news_id, news_source, label):
+        self.tweet_id = tweet_id
+        self.news_id = news_id
+        self.news_source = news_source
+        self.label = label
+
+
+class News:
     def __init__(self, info_dict, label, news_platform):
         self.news_id = info_dict["id"]
         self.news_url = info_dict["news_url"]
         self.news_title = info_dict["title"]
-        self.tweet_ids =[]
+        self.tweet_ids = []
 
         try:
-            tweets =  [int(tweet_id) for tweet_id in info_dict["tweet_ids"].split("\t")]
+            tweets = [int(tweet_id) for tweet_id in info_dict["tweet_ids"].split("\t")]
             self.tweet_ids = tweets
         except:
             pass
@@ -27,9 +35,7 @@ class News:
         self.platform = news_platform
 
 
-
 class Config:
-
     def __init__(self, data_dir, data_collection_dir, tweet_keys_file, num_process):
         self.dataset_dir = data_dir
         self.dump_location = data_collection_dir
@@ -39,9 +45,7 @@ class Config:
         self.twython_connector = TwythonConnector("localhost:5000", tweet_keys_file)
 
 
-
 class DataCollector:
-
     def __init__(self, config):
         self.config = config
 
@@ -60,11 +64,19 @@ class DataCollector:
                 maxInt = int(maxInt / 10)
 
         news_list = []
-        with open('{}/{}_{}.csv'.format(self.config.dataset_dir, data_choice["news_source"],
-                                        data_choice["label"]), encoding="UTF-8") as csvfile:
+        with open(
+            "{}/{}_{}.csv".format(
+                self.config.dataset_dir,
+                data_choice["news_source"],
+                data_choice["label"],
+            ),
+            encoding="UTF-8",
+        ) as csvfile:
             reader = csv.DictReader(csvfile)
             for news in reader:
-                news_list.append(News(news, data_choice["label"], data_choice["news_source"]))
+                news_list.append(
+                    News(news, data_choice["label"], data_choice["news_source"])
+                )
 
         return news_list
 
@@ -78,17 +90,25 @@ def create_dir(dir_name):
                 raise
 
 
+def get_dump_dir(config: Config, tweet: Tweet) -> str:
+    return "{}/{}/{}/{}".format(
+        config.dump_location, tweet.news_source, tweet.label, tweet.news_id
+    )
+
+
 def is_folder_exists(folder_name):
     return os.path.exists(folder_name)
 
+
 def is_file_exists(file_name):
     return os.path.exists(file_name)
+
 
 def equal_chunks(list, chunk_size):
     """return successive n-sized chunks from l."""
     chunks = []
     for i in range(0, len(list), chunk_size):
-        chunks.append(list[i:i + chunk_size])
+        chunks.append(list[i : i + chunk_size])
 
     return chunks
 
@@ -103,7 +123,9 @@ def multiprocess_data_collection(function_reference, data_list, args, config: Co
         pbar.update()
 
     for i in range(pbar.total):
-        pool.apply_async(function_reference, args=(data_list[i],)+ args, callback=update)
+        pool.apply_async(
+            function_reference, args=(data_list[i],) + args, callback=update
+        )
 
     pool.close()
     pool.join()
