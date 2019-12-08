@@ -67,8 +67,6 @@ The `config.json` can be used to configure and collect only certain parts of the
      - **user_following**: This option allows to download the user following ids of the users involved in tweets. To download user's following ids, tweet objects needs to be downloaded first in order to identify users involved in tweets.
 
 
-Code for collecting some of the dimensions of social engagments including replies and commets can be provided upon request.
-
 ## Running Code
 
 Inorder to collect data set fast, code makes user of process parallelism and to synchronize twitter key limitations across mutiple python processes, a lightweight flask application is used as keys management server.
