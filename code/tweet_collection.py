@@ -13,15 +13,6 @@ from util import Constants
 from util.util import equal_chunks
 
 
-class Tweet:
-
-    def __init__(self, tweet_id, news_id, news_source, label):
-        self.tweet_id = tweet_id
-        self.news_id = news_id
-        self.news_source = news_source
-        self.label = label
-
-
 def dump_tweet_information(tweet_chunk: list, config: Config, twython_connector: TwythonConnector):
     """Collect info and dump info of tweet chunk containing atmost 100 tweets"""
 
