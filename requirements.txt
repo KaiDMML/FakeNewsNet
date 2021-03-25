@@ -18,7 +18,7 @@ nltk==3.4
 oauthlib==3.0.1
 Pillow==5.4.1
 python-dateutil==2.8.0
-PyYAML==5.1
+PyYAML==5.4
 requests==2.21.0
 requests-file==1.4.3
 requests-oauthlib==1.2.0
