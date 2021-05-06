@@ -6,7 +6,7 @@ cssselect==1.0.3
 feedfinder2==0.0.4
 feedparser==5.2.1
 Flask==1.0.2
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 idna==2.8
 itsdangerous==1.1.0
 jieba3k==0.35.1
