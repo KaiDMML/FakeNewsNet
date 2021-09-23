@@ -2,6 +2,8 @@
 
 ## FakeNewsNet
 
+*** We will never ask for money to share the datasets. If someone claims that s/he has the all the raw data and wants a payment, please be careful. ***
+
 ***We released a tool [FakeNewsTracker], for collecting, analyzing, and visualizing of fake news and the related dissemination on social media. Check it out!***
 
 ***The latest dataset paper with detailed analysis on the dataset  can be found at [FakeNewsNet]***
